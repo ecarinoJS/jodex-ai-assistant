@@ -406,8 +406,8 @@ Available action types:
   /**
    * Format messages for OpenAI API
    */
-  private formatMessages(messages: Message[], systemContent: string): OpenAI.Chat.ChatCompletionMessageParam[] {
-    const openaiMessages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+  private formatMessages(messages: Message[], systemContent: string): any[] {
+    const openaiMessages: any[] = [
       {
         role: 'system',
         content: systemContent,

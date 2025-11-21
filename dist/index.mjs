@@ -842,7 +842,9 @@ var VoiceConnection = class {
     }
     if (this.localAudioTrack) {
       await this.localAudioTrack.stop();
-      await this.localAudioTrack.dispose();
+      if ("dispose" in this.localAudioTrack && typeof this.localAudioTrack.dispose === "function") {
+        await this.localAudioTrack.dispose();
+      }
       this.localAudioTrack = null;
     }
     if (this.remoteAudioTrack) {

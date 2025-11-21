@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { UserEvent } from '@testing-library/user-event/setup/setup';
+import type { UserEvent } from '@testing-library/user-event';
 import { JodexAI } from '../../JodexAI';
 import type { JodexAIProps, Message, Alert, Datasets, Action } from '../../types';
 
@@ -241,26 +241,26 @@ export const createMockMediaStream = (tracks: any[] = []) => {
     enabled: true,
     muted: false,
     readyState: 'live',
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    getSettings: jest.fn().mockReturnValue({}),
-    getCapabilities: jest.fn().mockReturnValue({}),
-    stop: jest.fn(),
-    clone: jest.fn().mockImplementation(() => mockTrack),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    getSettings: vi.fn().mockReturnValue({}),
+    getCapabilities: vi.fn().mockReturnValue({}),
+    stop: vi.fn(),
+    clone: vi.fn().mockImplementation(() => mockTrack),
   };
 
   return {
     id: 'mock-stream',
     active: true,
-    getAudioTracks: jest.fn().mockReturnValue(tracks.length > 0 ? tracks : [mockTrack]),
-    getVideoTracks: jest.fn().mockReturnValue([]),
-    getTracks: jest.fn().mockReturnValue(tracks.length > 0 ? tracks : [mockTrack]),
-    addTrack: jest.fn(),
-    removeTrack: jest.fn(),
-    getTracksById: jest.fn().mockReturnValue([]),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    clone: jest.fn().mockImplementation(() => createMockMediaStream(tracks)),
+    getAudioTracks: vi.fn().mockReturnValue(tracks.length > 0 ? tracks : [mockTrack]),
+    getVideoTracks: vi.fn().mockReturnValue([]),
+    getTracks: vi.fn().mockReturnValue(tracks.length > 0 ? tracks : [mockTrack]),
+    addTrack: vi.fn(),
+    removeTrack: vi.fn(),
+    getTracksById: vi.fn().mockReturnValue([]),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    clone: vi.fn().mockImplementation(() => createMockMediaStream(tracks)),
   };
 };
 
@@ -280,9 +280,9 @@ export const createMockSpeechRecognition = () => ({
   onspeechstart: null as ((event: any) => void) | null,
   onspeechend: null as ((event: any) => void) | null,
   onaudioend: null as ((event: any) => void) | null,
-  start: jest.fn(),
-  stop: jest.fn(),
-  abort: jest.fn(),
+  start: vi.fn(),
+  stop: vi.fn(),
+  abort: vi.fn(),
 });
 
 // Custom render function
@@ -343,7 +343,7 @@ export const createMockPerformanceNow = (startTime = 0) => {
 // Browser environment mock helpers
 export const mockGeolocation = (overrides: any = {}) => {
   const mockGeolocation = {
-    getCurrentPosition: jest.fn().mockImplementation((success, error) => {
+    getCurrentPosition: vi.fn().mockImplementation((success, error) => {
       success({
         coords: {
           latitude: 7.0731,
@@ -358,8 +358,8 @@ export const mockGeolocation = (overrides: any = {}) => {
         ...overrides,
       });
     }),
-    watchPosition: jest.fn(),
-    clearWatch: jest.fn(),
+    watchPosition: vi.fn(),
+    clearWatch: vi.fn(),
   };
 
   Object.defineProperty(global.navigator, 'geolocation', {
@@ -372,8 +372,8 @@ export const mockGeolocation = (overrides: any = {}) => {
 
 export const mockMediaDevices = (overrides: any = {}) => {
   const mockMediaDevices = {
-    getUserMedia: jest.fn().mockResolvedValue(createMockMediaStream()),
-    enumerateDevices: jest.fn().mockResolvedValue([
+    getUserMedia: vi.fn().mockResolvedValue(createMockMediaStream()),
+    enumerateDevices: vi.fn().mockResolvedValue([
       {
         deviceId: 'audio-input-1',
         kind: 'audioinput',
@@ -387,7 +387,7 @@ export const mockMediaDevices = (overrides: any = {}) => {
         groupId: 'group1',
       },
     ]),
-    getSupportedConstraints: jest.fn().mockReturnValue({
+    getSupportedConstraints: vi.fn().mockReturnValue({
       width: true,
       height: true,
       sampleRate: true,

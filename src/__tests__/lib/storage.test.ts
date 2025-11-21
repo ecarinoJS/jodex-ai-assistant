@@ -765,4 +765,3 @@ describe('Storage System', () => {
       expect(mockMigrate).toHaveBeenCalled();
     });
   });
-});

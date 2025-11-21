@@ -6,21 +6,21 @@ import { lazy } from 'react';
  */
 
 // Direct import for framer-motion to avoid DTS issues
-export const importMotion = async () => {
-  const { motion } = await import('framer-motion');
-  return motion;
+export const importMotion = async (): Promise<any> => {
+  const motionModule = await import('framer-motion');
+  return motionModule.motion;
 };
 
 // Dynamic import for livekit-client
 export const importLiveKit = async () => {
   const livekitModule = await import('livekit-client');
   return {
-    connect: livekitModule.connect,
-    RoomEvent: livekitModule.RoomEvent,
-    DataPacket_Kind: livekitModule.DataPacket_Kind,
-    ParticipantPermission: livekitModule.ParticipantPermission,
-    ConnectionQuality: livekitModule.ConnectionQuality,
-    Track: livekitModule.Track,
+    connect: livekitModule.default?.connect || livekitModule.connect,
+    RoomEvent: livekitModule.default?.RoomEvent || livekitModule.RoomEvent,
+    DataPacket_Kind: livekitModule.default?.DataPacket_Kind || livekitModule.DataPacket_Kind,
+    ParticipantPermission: livekitModule.default?.ParticipantPermission || livekitModule.ParticipantPermission,
+    ConnectionQuality: livekitModule.default?.ConnectionQuality || livekitModule.ConnectionQuality,
+    Track: livekitModule.default?.Track || livekitModule.Track,
   };
 };
 

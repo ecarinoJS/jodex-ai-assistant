@@ -2,8 +2,8 @@
 
 Voice-enabled AI assistant component for agricultural supply chain management, specifically designed for cacao farming operations.
 
-![Version](https://img.shields.io/npm/v/jodex-ai-assistant)
-![License](https://img.shields.io/npm/l/jodex-ai-assistant)
+![Version](https://img.shields.io/pnpm/v/jodex-ai-assistant)
+![License](https://img.shields.io/pnpm/l/jodex-ai-assistant)
 ![TypeScript](https://img.shields.io/badge/TypeScript-blue)
 
 ## ✨ Features
@@ -22,7 +22,7 @@ Voice-enabled AI assistant component for agricultural supply chain management, s
 ### Installation
 
 ```bash
-npm install jodex-ai-assistant
+pnpm install jodex-ai-assistant
 ```
 
 ### Basic Usage
@@ -298,21 +298,21 @@ git clone https://github.com/[username]/jodex-ai-assistant.git
 cd jodex-ai-assistant
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start development
-npm run dev
+pnpm run dev
 
 # Build the package
-npm run build
+pnpm run build
 
 # Run tests
-npm test
+pnpm test
 
 # Run demo app
 cd examples/nextjs-app
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 ## 📚 API Reference

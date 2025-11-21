@@ -111,7 +111,7 @@ export function checkBrowserCompatibility(): BrowserCompatibility {
     }
 
     // Check for Speech Recognition
-    compatibility.features.speechRecognition = !!(window.SpeechRecognition);
+    compatibility.features.speechRecognition = !!(window as any).SpeechRecognition;
     compatibility.features.webkitSpeechRecognition = !!(window as any).webkitSpeechRecognition;
 
     if (!compatibility.features.speechRecognition && !compatibility.features.webkitSpeechRecognition) {

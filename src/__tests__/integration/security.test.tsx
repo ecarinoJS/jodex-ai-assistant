@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { JodexAI } from '../../JodexAI';
-import { createMockFetchResponse, waitFor, flushPromises } from '../setup';
+import { createMockFetchResponse, flushPromises } from '../setup';
 
 describe('Security Integration Tests', () => {
   let mockFetch: any;

@@ -17,8 +17,18 @@ const sampleFarmers: Farmer[] = [
       email: 'maria.santos@example.com',
       phone: '+639123456789'
     },
-    farmSize: 5.2,
-    crops: ['Cacao'],
+    farm_size_ha: 5.2,
+    trees_count: 1300,
+    trees_per_ha: 250,
+    farming_experience_years: 12,
+    cooperative: 'Davao Cacao Growers Association',
+    avg_yield_per_tree_kg: 2.8,
+    annual_production_kg: 3640,
+    primary_buyer: 'Cacao de Davao',
+    has_fermentation_facility: true,
+    preferred_contact: 'WhatsApp',
+    reliability_score: 0.92,
+    crops: ['cacao'],
     production: {
       annual_kg: 3640,
       avg_yield_per_tree_kg: 2.8
@@ -32,15 +42,11 @@ const testDatasets = {
   weather: [],
   diseases: [],
   inventory: {
-    id: 'INV001',
-    productId: 'COCOA_BEANS_001',
-    name: 'Cacao Beans',
-    category: 'Raw Materials',
-    quantity: 2500,
-    unit: 'kg',
-    location: 'Main Warehouse',
-    supplier: 'Davao Cacao Suppliers',
-    cost: 120.50
+    current_stock_kg: 2500,
+    daily_usage_rate: 85,
+    safety_stock_kg: 500,
+    reorder_point_kg: 850,
+    last_updated: '2024-02-01T10:00:00Z'
   }
 };
 

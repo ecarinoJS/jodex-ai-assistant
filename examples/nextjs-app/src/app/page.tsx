@@ -16,10 +16,16 @@ import { WeatherAlerts } from '@/components/WeatherAlerts';
 // In a real app, this would come from your database or API
 const dashboardFarmers: Farmer[] = [
   {
-    farmer_id: 'F001',
+    id: 'F001',
     name: 'Maria Santos',
-    location: 'Davao City',
-    contact: '+639123456789',
+    location: {
+      latitude: 7.0731,
+      longitude: 125.6128,
+      region: 'Davao City'
+    },
+    contact: {
+      phone: '+639123456789'
+    },
     farm_size_ha: 5.2,
     trees_count: 1300,
     trees_per_ha: 250,
@@ -30,13 +36,24 @@ const dashboardFarmers: Farmer[] = [
     primary_buyer: 'Cacao de Davao',
     has_fermentation_facility: true,
     preferred_contact: 'WhatsApp',
-    reliability_score: 0.92
+    reliability_score: 0.92,
+    crops: ['cacao'],
+    production: {
+      annual_kg: 3640,
+      avg_yield_per_tree_kg: 2.8
+    }
   },
   {
-    farmer_id: 'F002',
+    id: 'F002',
     name: 'Juan Reyes',
-    location: 'Compostela Valley',
-    contact: '+639987654321',
+    location: {
+      latitude: 7.3905,
+      longitude: 126.2048,
+      region: 'Compostela Valley'
+    },
+    contact: {
+      phone: '+639987654321'
+    },
     farm_size_ha: 3.8,
     trees_count: 950,
     trees_per_ha: 250,
@@ -47,7 +64,12 @@ const dashboardFarmers: Farmer[] = [
     primary_buyer: 'Cacao de Davao',
     has_fermentation_facility: false,
     preferred_contact: 'SMS',
-    reliability_score: 0.85
+    reliability_score: 0.85,
+    crops: ['cacao'],
+    production: {
+      annual_kg: 2375,
+      avg_yield_per_tree_kg: 2.5
+    }
   }
 ];
 
@@ -133,7 +155,7 @@ export default function HomePage() {
 
   // Function to handle farmer selection (can be used by JodexAI actions)
   const selectFarmer = (farmerId: string) => {
-    const farmer = dashboardFarmers.find(f => f.farmer_id === farmerId);
+    const farmer = dashboardFarmers.find(f => f.id === farmerId);
     setSelectedFarmer(farmer || null);
   };
 
@@ -216,7 +238,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <label className="text-sm font-medium text-gray-500">Location</label>
-                  <p>{selectedFarmer.location}</p>
+                  <p>{selectedFarmer.location.region}</p>
                 </div>
                 <div>
                   <label className="text-sm font-medium text-gray-500">Farm Size</label>

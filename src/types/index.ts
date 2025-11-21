@@ -56,6 +56,12 @@ export interface Alert {
   actions?: Action[];
 }
 
+export interface AlertPanelProps {
+  alerts: Alert[];
+  onAcknowledge: (alertId: string) => void;
+  onDismiss: (alertId: string) => void;
+}
+
 export interface AlertRule {
   id: string;
   name: string;

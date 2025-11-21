@@ -1,15 +1,20 @@
 'use client';
 
-import { JodexAI, Action } from 'jodex-ai-assistant';
-import { Farmer, Harvest, Weather, Disease, Inventory } from 'jodex-ai-assistant';
+import { JodexAI, Action, Farmer, Harvest, Weather, Disease, Inventory } from 'jodex-ai-assistant';
 
 // Sample data for demonstration
 const sampleFarmers: Farmer[] = [
   {
-    farmer_id: 'F001',
+    id: 'F001',
     name: 'Maria Santos',
-    location: 'Davao City',
-    contact: '+639123456789',
+    location: {
+      latitude: 7.0731,
+      longitude: 125.6128,
+      region: 'Davao City'
+    },
+    contact: {
+      phone: '+639123456789'
+    },
     farm_size_ha: 5.2,
     trees_count: 1300,
     trees_per_ha: 250,
@@ -20,13 +25,24 @@ const sampleFarmers: Farmer[] = [
     primary_buyer: 'Cacao de Davao',
     has_fermentation_facility: true,
     preferred_contact: 'WhatsApp',
-    reliability_score: 0.92
+    reliability_score: 0.92,
+    crops: ['cacao'],
+    production: {
+      annual_kg: 3640,
+      avg_yield_per_tree_kg: 2.8
+    }
   },
   {
-    farmer_id: 'F002',
+    id: 'F002',
     name: 'Juan Reyes',
-    location: 'Compostela Valley',
-    contact: '+639987654321',
+    location: {
+      latitude: 7.3905,
+      longitude: 126.2048,
+      region: 'Compostela Valley'
+    },
+    contact: {
+      phone: '+639987654321'
+    },
     farm_size_ha: 3.8,
     trees_count: 950,
     trees_per_ha: 250,
@@ -37,7 +53,12 @@ const sampleFarmers: Farmer[] = [
     primary_buyer: 'Cacao de Davao',
     has_fermentation_facility: false,
     preferred_contact: 'SMS',
-    reliability_score: 0.85
+    reliability_score: 0.85,
+    crops: ['cacao'],
+    production: {
+      annual_kg: 2375,
+      avg_yield_per_tree_kg: 2.5
+    }
   }
 ];
 
@@ -130,8 +151,8 @@ export function JodexProvider({ children }: JodexProviderProps) {
         console.log('👥 Farmer directory requested');
         break;
       case 'open_farmer_profile':
-        if (action.data.farmer_id) {
-          const farmer = sampleFarmers.find(f => f.farmer_id === action.data.farmer_id);
+        if (action.data.id) {
+          const farmer = sampleFarmers.find(f => f.id === action.data.id);
           console.log('👤 Farmer profile:', farmer?.name);
         }
         break;
