@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+pnpm-lock.yaml
 
 # testing
 /coverage
@@ -34,3 +35,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# examples
+examples/nextjs-app/node_modules
+examples/nextjs-app/pnpm-lock.yaml
+examples/nextjs-app/.next/
+examples/nextjs-app/out
